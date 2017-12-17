@@ -47,7 +47,7 @@ Untracked files:
         Readme.md  
         hello.py  
 nothing added to commit but untracked files present (use "git add" to track)  
-<br />
+
 PS：使用“git status ”查看当前工作空间状态  
 通过反馈的信息，可以了解到两个文件“Readme.md”“hello.py”并没有被Git跟踪。
 
@@ -61,7 +61,7 @@ Changes to be committed:
   (use "git rm --cached <file>..." to unstage)  
         new file:   Readme.md  
         new file:   hello.py  
-<br />
+
 PS：使用“git add *** ”命令会将***文件加入暂存区域进行跟踪。  
 如果要加入目录全部文件也可以用“git add * ”指令。
 
@@ -72,13 +72,13 @@ PS：使用“git add *** ”命令会将***文件加入暂存区域进行跟踪
  2 files changed, 2 insertions(+)  
  create mode 100644 Readme.md  
  create mode 100644 hello.py  
-<br />
+
 $ git log  
 commit 87aba18674d701755bcc871daf1fbc14318c1142  
 Author: jaya <qq416296378@Jaya>  
 Date:   Sat Dec 16 17:05:42 2017 +0800  
     Old Version  
-<br />
+
 PS：“git commit -m "Old Version!"”将暂存区域的文件保存在仓库，-m参数是备注的意思。  
 “git log”可以查看当前目录下的Git版本的使用情况。  
     
@@ -90,20 +90,20 @@ Changes not staged for commit:
   (use "git checkout -- <file>..." to discard changes in working directory)  
         modified:   Readme.md  
 no changes added to commit (use "git add" and/or "git commit -a")  
-<br />
+
 PS:我们发现修改后的文件和暂存区域的文件不一致，所以需要将修改后的文件添加至暂存区域。  
-<br />
+
 $ git add Readme.md  
 $ git status  
 On branch master  
 Changes to be committed:  
   (use "git reset HEAD <file>..." to unstage)  
         modified:   Readme.md  
-<br />
+
 $ git commit -m "back to history test"  
 [master 50304f9] back to history test  
  1 file changed, 1 insertion(+)  
-<br />
+
 $ git log  
 commit 50304f9041438f61a7a88c0ceb29ee4b34b669e3  
 Author: jaya <qq416296378@Jaya>  
@@ -124,21 +124,21 @@ commit 87aba18674d701755bcc871daf1fbc14318c1142
 Author: jaya <qq416296378@Jaya>  
 Date:   Sat Dec 16 17:05:42 2017 +0800  
     Old Version  
-<br />
+
 $ git checkout 87aba1  
 Previous HEAD position was 50304f9... back to history test  
 HEAD is now at 87aba18... Old Version  
-<br />
+
 PS：这样我们已经回到Old Version版本了。commit号码只需要输入前几位就可以。  
-<br />
+
 $ git log  
 commit 87aba18674d701755bcc871daf1fbc14318c1142  
 Author: jaya <qq416296378@Jaya>  
 Date:   Sat Dec 16 17:05:42 2017 +0800  
     Old Version  
-<br />
+
 PS：可以看见log中的最新版本已经不见，不过他并没有丢失，我们可以通过--all参数找到。  
-<br />
+
 $ git log --all  
 commit 50304f9041438f61a7a88c0ceb29ee4b34b669e3  
 Author: jaya <qq416296378@Jaya>  
@@ -160,17 +160,17 @@ Date:   Sat Dec 16 17:05:42 2017 +0800
 > $ git branch  
 \* (HEAD detached at 87aba18)  
   master  
-<br />
+
 PS：可以发现目前我们只有一个master分支。HEAD为当前指针。
 
 #### 创建分支：
 > $ git checkout -b test_branch  
 Switched to a new branch 'test_branch'  
-<br />
+
 $ git branch  
   master  
 \* test_branch  
-<br />
+
 PS:
 使用“git checkout -b test_branch ”添加分支后自动跳转到新的分支。  
 也可以使用“git branch *** ”来创建分支。（不会跳转到新的分支）  
@@ -180,7 +180,7 @@ PS:
 > $ git log --decorate --oneline --graph --all  
 \* 50304f9 (HEAD -> test_branch, master) back to history test  
 \* 87aba18 Old Version  
-<br />
+
 $ git status  
 On branch test_branch  
 Changes not staged for commit:  
@@ -188,18 +188,18 @@ Changes not staged for commit:
   (use "git checkout -- <file>..." to discard changes in working directory)  
         modified:   Readme.md  
 no changes added to commit (use "git add" and/or "git commit -a")  
-<br />
+
 $ git add \*  
-<br />
+
 $ git commit -m "test branch!"  
 [test_branch 2c4decf] test branch!  
  1 file changed, 2 insertions(+), 1 deletion(-)  
-<br />
+
 $ git log --decorate --oneline --graph --all  
 \* 2c4decf (HEAD -> test_branch) test branch!  
 \* 50304f9 (master) back to history test  
 \* 87aba18 Old Version  
-<br />
+
 PS：可以看见更新仓库后，目前HEAD指针指向test_branch所在的“2c4decf”分支。  
 “git log --decorate --oneline --graph --all”说明如下：  
 --decorate 显示所有引用  
@@ -210,31 +210,31 @@ PS：可以看见更新仓库后，目前HEAD指针指向test_branch所在的“
 #### 合并分支：
 > $ git checkout master  
 Switched to branch 'master'  
-<br />
+
 $ git log --decorate --oneline --graph --all  
 \* 2c4decf (test_branch) test branch!  
 \* 50304f9 (HEAD -> master) back to history test  
 \* 87aba18 Old Version  
-<br />
+
 $ git merge test_branch  
 Updating 50304f9..2c4decf  
 Fast-forward  
  Readme.md | 3 ++-  
  1 file changed, 2 insertions(+), 1 deletion(-)  
-<br />
+
 $ git log --decorate --oneline --graph --all  
 \* 2c4decf (HEAD -> master, test_branch) test branch!  
 \* 50304f9 back to history test  
 \* 87aba18 Old Version  
-<br />
+
 $ git branch -d test_branch  
 Deleted branch test_branch (was 2c4decf).  
-<br />
+
 $ git log --decorate --oneline --graph --all  
 \* 2c4decf (HEAD -> master) test branch!  
 \* 50304f9 back to history test  
 \* 87aba18 Old Version  
-<br />
+
 PS：首先切换到master分支上。  
 使用“git merge test_branch ”命令将“test_branch”分支合并到master上。  
 使用“git branch -d test_branch ”删除test_branch。（当然也可以不删除）  
